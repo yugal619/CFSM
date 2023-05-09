@@ -38,6 +38,7 @@ class RequestsUtils:
 
         while max_reties > 0:
             try:
+                time.sleep(1)
                 logging.info(f"Sending {method} request for {url}, Max retires pending: {max_reties}")
                 response = requests.request(method, url, **kwargs)
             except requests.RequestException as error:

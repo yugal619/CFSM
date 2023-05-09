@@ -34,8 +34,8 @@ class ClientUtil():
         assert response.json()['success'] is True, f'[FAILED] Reason - {response.json()["reason"]}'
         return response
 
-    def add_data_in_client(self):
-        response = self.client.add_data_in_client()
+    def add_data_in_client(self, **kwargs):
+        response = self.client.add_data_in_client(**kwargs)
         assert response.json()['success'] is True, f'[FAILED] Reason - {response.json()["reason"]}'
 
     def delete_data_in_client(self, clientId=None):

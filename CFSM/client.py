@@ -21,9 +21,25 @@ class Client():
         response = RequestsUtils.get(host=self.base_url, path=uri, headers=self.header)
         return response
 
-    def add_data_in_client(self):
+    def add_data_in_client(self, **kwargs):
         uri = '/api/client'
         body = request_data.add_client_body
+        if kwargs:
+            type = kwargs.get("type")
+            name = kwargs.get("name")
+            phone = kwargs.get("phone")
+            module = kwargs.get("module")
+            if type:
+                body["type"] = type
+            if name:
+                body["name"] = name
+            if phone:
+                body["phone"] = phone
+            if module:
+                body["module"] = module
+
+        import logging
+        logging.info(body)
 
         response = RequestsUtils.post(host=self.base_url, path=uri, headers=self.header, data=json.dumps(body))
         return response
@@ -43,8 +59,8 @@ class Client():
 
         Like:-
 
-        type (str, optional): Type of client
-        name (str, optional): Name of client
+        type (str, required): Type of client
+        name (str, required): Name of client
         phone (str, optional): Phone number
         module (str, optional): Module
         """

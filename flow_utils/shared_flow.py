@@ -16,3 +16,18 @@ class SharedUtil():
     def categoryUtil(self):
         from flow_utils.category_util import CategoryUtil
         return CategoryUtil(self.base_url, self.header, self.log)
+
+    @property
+    def daybookUtil(self):
+        from flow_utils.daybook_util import DaybookUtil
+        return DaybookUtil(self.base_url, self.header, self.log)
+
+    @property
+    def bankUtil(self):
+        from flow_utils.bank_util import BankUtil
+        return BankUtil(self.base_url, self.header, self.log)
+
+    @property
+    def partnerUtil(self):
+        from flow_utils.partner_util import PartnerUtil
+        return PartnerUtil(self.base_url, self.header, self.log)
